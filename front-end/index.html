@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="lardiApp" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lardi-trans</title>
+    <script src="./js/angular.js"></script>
+    <script src="./js/ui-bootstrap-tpls-2.3.0.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/controllers/listsCtrl.js"></script>
+    <script src="./js/controllers/listCtrl.js"></script>
+    <script src="./js/controllers/cardCtrl.js"></script>
+    <script src="./js/controllers/addDialogCtrl.js"></script>
+    <script src="./js/factories/listFactory.js"></script>
+    <script src="./js/factories/cardFactory.js"></script>
+    <script src="./js/factories/httpFactory.js"></script>
+    <script src="./js/directives/datePicker.js"></script>
+
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/bootstrap-theme.css">
+    <link rel="stylesheet" href="./css/ui-bootstrap-custom-2.3.0-csp.css">
+    <link rel="stylesheet" href="./css/mycustom.css">
+</head>
+<body ng-controller="lardiCtrl">
+    <header>
+        <div class="page-header">
+            <h1>To do list</h1>
+        </div>
+    </header>
+    <main ng-cloak
+          ng-controller="listsCtrl as listsCtrl">
+        <section id="list-container"
+                 class="panel-primary list-container"
+                 ng-controller="listCtrl as listCtrl">
+            <div class="row list-block">
+                <section class="my-list list-myinline"
+                         ng-repeat="list in listsCtrl.lists">
+                    <h3>{{list.listName}}</h3>
+
+                    <div class="card"
+                         ng-repeat="card in listCtrl.getCards(list)"
+                         ng-controller="cardCtrl as cardCtrl">
+                        <div>
+                            <div>{{card.description}}</div>
+                            <div class="card-date">{{card.date}}</div>
+                            <div class="card-priority">
+                                <span class="pr-{{card.priority}}">
+                                    {{card.priority}}
+                                </span>
+                            </div>
+                            <div class="move-card hand"
+                                 ng-if="list.canmove"
+                                 ng-click="cardCtrl.moveCard(card)"
+                                 title="move it to next table">
+                            </div>
+                            <div class="remove-card hand"
+                                 ng-if="list.candelete"
+                                 ng-click="cardCtrl.deleteCard(card, list.id)"
+                                 title="delete this">
+                            </div>
+                            <div class="abort-card hand"
+                                 ng-if="list.canabort"
+                                 ng-click="cardCtrl.abortCard(card)"
+                                 title="abort this">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <button class="btn btn-info btn-lg"
+                    ng-click="listCtrl.createItem()">Add new item</button>
+        </section>
+
+    </main>
+
+
+</body>
+</html>

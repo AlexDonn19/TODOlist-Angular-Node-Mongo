@@ -1,0 +1,136 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-width: 740px;
+    font-family: Helvetica, Sans-Serif, Arial;
+    font-size: 16px;
+}
+header {
+    background-color: #205c7e;
+    color: #fff;
+    text-align: center;
+    padding: 9px;
+    margin: 0;
+}
+input {
+    border-radius: 4px;
+}
+.app-name {
+    color: #fff;
+    font-weight: 500;
+    font-size: 2em;
+}
+.my-list {
+    position: relative;
+    width: 23%;
+    background: #A1FCF8;
+    border-radius: 4px;
+    padding: 10px;
+    border: 4px solid #3D8CFA;
+    box-shadow: 2px 2px 6px grey;
+    vertical-align: top;
+    margin: 0 1%;
+}
+.my-list h3 {
+    font-size: 16px;
+    font-weight: 700;
+}
+.my-list input {
+    margin-bottom: 0;
+}
+.my-list.new-list {
+    background-color: #628DA4;
+}
+.list-myinline {
+    display: inline-block;
+}
+.list-container {
+    padding: 20px;
+    position: relative;
+}
+.list-block {
+    margin-bottom: 20px;
+}
+.card {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 10px 0;
+    border: 1px solid #0B22E0;
+    overflow: auto;
+}
+.card-date {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #190505;
+}
+.card-priority {
+    position: absolute;
+    left: 10px;
+    bottom: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #190505;
+}
+.move-card {
+    position: absolute;
+    top: 3px;
+    right: 20px;
+    width: 15px;
+    height: 15px;
+    background: url(../img/arrow.png);
+    background-size: cover;
+}
+.abort-card {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 15px;
+    height: 15px;
+    background: url(../img/abort.png);
+    background-size: cover;
+}
+.remove-card {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    width: 15px;
+    height: 15px;
+    background: url(../img/delete.png);
+    background-size: cover;
+}
+.card:hover {
+   border-color: #205c7e;
+}
+.hand {
+    cursor: pointer;
+}
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+.pr-high {
+    background: #F08FBF;
+    color: #05173D;
+}
+.pr-medium {
+    background: #F5ED19;
+    color: #0D1568;
+}
+.pr-low {
+    background: #19F52D;
+    color: #030D30;
+}
+.my-calendar {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background: url(../img/calendar.png);
+    background-size: cover;
+}
