@@ -10,6 +10,7 @@
     <script src="./js/controllers/listCtrl.js"></script>
     <script src="./js/controllers/cardCtrl.js"></script>
     <script src="./js/controllers/addDialogCtrl.js"></script>
+    <script src="./js/controllers/editDialogCtrl.js"></script>
     <script src="./js/factories/listFactory.js"></script>
     <script src="./js/factories/cardFactory.js"></script>
     <script src="./js/factories/httpFactory.js"></script>
@@ -50,7 +51,7 @@
                             <div class="move-card hand"
                                  ng-if="list.canmove"
                                  ng-click="cardCtrl.moveCard(card)"
-                                 title="move it to next table">
+                                 title="move it to the next table">
                             </div>
                             <div class="remove-card hand"
                                  ng-if="list.candelete"
@@ -61,6 +62,11 @@
                                  ng-if="list.canabort"
                                  ng-click="cardCtrl.abortCard(card)"
                                  title="abort this">
+                            </div>
+                            <div class="update-card hand"
+                                 ng-if="list.canupdate"
+                                 ng-click="listCtrl.updateCard(card, list.id)"
+                                 title="change this">
                             </div>
                         </div>
                     </div>

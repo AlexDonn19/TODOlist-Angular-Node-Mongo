@@ -47,5 +47,11 @@
         card.list_id = card.list_id + 1;
     };
 
+    service.updateCard = function (updatingCard) {
+        var card = getCardById(updatingCard._id),
+            idx = cards.indexOf(card);
+        cards[idx] = updatingCard;
+    };
+
     return service;
 });

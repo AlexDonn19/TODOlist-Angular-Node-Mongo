@@ -64,7 +64,7 @@
     });
 
     app.put('/api/cards/:id', cors(), function (req, res){
-        log.info('put: req.params', req.params);
+        log.info('put: req.params', req.body);
         return Card.findById(req.params.id, function (err, card) {
             if(!card) {
                 res.statusCode = 404;

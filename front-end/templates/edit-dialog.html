@@ -1,0 +1,62 @@
+﻿<div class="modal-header">
+  <h3 class="modal-title">Edit event</h3>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+  <table class="table row">
+    <thead>
+        <tr>
+            <td class="col-xs-3">Input</td>
+            <td class="col-xs-9">
+              <div class="col-xs-3">new data</div>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Date</td>
+            <td>
+              <div class="col-xs-9">
+                {{newdata.date}}
+              </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Type description</td>
+            <td>
+              <div class="col-xs-10">
+                <input type="text"
+                       class="col-xs-10"
+                       ng-if="can_chg_descr"
+                       ng-model="newdata.description">
+                <p ng-if="!can_chg_descr">{{newdata.description}}</p>
+              </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Select priority</td>
+            <td>
+              <div class="col-xs-3">
+              <select class="form-control" data-style="btn-primary" data-width="auto" ng-model="newdata.priority">
+                  <option class="pr-high" value="high">high</option>
+                  <option class="pr-medium" value="medium">medium</option>
+                  <option class="pr-low" value="low">low</option>
+              </select>
+              </div>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success" ng-click="ok()" title="Save" ng-disabled="invalid">Save</button>
+  <button class="btn btn-default" ng-click="cancel()" title="Cancel">Cancel</button>
+</div>
+
+
+
+
+
+
+

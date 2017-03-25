@@ -7,7 +7,6 @@
     service.httpGetCards = function () {
         // $http.get('../data/cards.json').then(function (response) {
         $http.get(baseUrl).then(function (response) {
-            console.log('httpFactory: http.get', response.data);
             cardFactory.setCards(response.data);
         }).catch(function (err) {
                 console.log('httpFactory: Get Error', err);
@@ -37,7 +36,6 @@
         var moveCard = angular.copy(card);
         moveCard.list_id = moveCard.list_id + 1;
         $http.put(baseUrl+moveCard._id, moveCard).then(function (response) {
-            console.log('httpFactory: moveCard response', response.data);
             cardFactory.moveCard(response.data.card);
         }).catch(function (err) {
             console.log('httpFactory: Move Error', err);
@@ -45,11 +43,20 @@
         });
     };
 
+    service.httpUpdCard = function (card) {
+        var updCard = angular.copy(card);
+        $http.put(baseUrl+updCard._id, updCard).then(function (response) {
+            cardFactory.updateCard(response.data.card);
+        }).catch(function (err) {
+            console.log('httpFactory: Update Error', err);
+            alert('Can`t Update data');
+        });
+    };
+
     service.httpAbortCard = function (card) {
         var abortCard = angular.copy(card);
         abortCard.list_id = 4;
         $http.put(baseUrl+abortCard._id, abortCard).then(function (response) {
-            console.log('httpFactory: moveCard response', response.data);
             cardFactory.abortCard(response.data.card);
         }).catch(function (response) {
             console.log('httpFactory: Abort Error', response.data);
