@@ -1,7 +1,7 @@
 ﻿var express = require('express');
-var path = require('path'); // модуль для парсинга пути
+var path = require('path');
 var favicon = require('serve-favicon');
-var log = require('./libs/log')(module);  //подключим обёртку на логером
+var log = require('./libs/log')(module);
 var logger = require('morgan');
 var config = require('./config');
 var methodOverride = require('method-override');
@@ -11,19 +11,19 @@ var app = express();
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
-if (app.get('env') == 'development' ) {    // выводим все запросы со статусами в консоль
+if (app.get('env') == 'development' ) {
   app.use(logger('dev'));
 } else {
   app.use(logger('default'));
 }
 
-app.use(bodyParser.json());  // стандартный модуль, для парсинга JSON в запросах
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(methodOverride()); // поддержка put и delete
+app.use(methodOverride());
 
-require('./routes')(app);  // модуль для простого задания обработчиков путей
-app.use(express.static(path.join(__dirname, "public"))); // запуск статического файлового сервера, который смотрит на папку public/ (в нашем случае отдает index.html)
+require('./routes')(app);
+app.use(express.static(path.join(__dirname, "public")));
 
 
 app.use(function(req, res, next){

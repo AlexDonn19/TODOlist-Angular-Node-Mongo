@@ -3,7 +3,7 @@ var config = require('../config');
 
 var log = require('./log')(module);
 
-mongoose.Promise = global.Promise;   // remove error-message 'mongoose: mpromise deprecated'
+mongoose.Promise = global.Promise;
 mongoose.connect(config.get('mongoose:uri'));
 var db = mongoose.connection;
 

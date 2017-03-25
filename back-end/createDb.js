@@ -1,13 +1,12 @@
 var mongoose = require('./libs/mongoose');
-mongoose.set('debug', true);  // чтобы увидеть созданные индексы
-var async = require('async');  // дает создать цепочку асинхронных вызовов
-
+mongoose.set('debug', true);
+var async = require('async');
 
 // 1. drop collection cards  - очистить существующую базу
 // 2. create & save 3 cards  - создавать events
 // 3. close connection       - закрывать соединение
 
-async.series([    // последовательно выполняет указанные функции
+async.series([
 	open,
 	dropCardsDatabase,
 	requireModels,
@@ -34,10 +33,10 @@ function requireModels(callback) {
   require('./models/card');
   async.each(Object.keys(mongoose.models), function (modelName, callback) {
   	mongoose.models[modelName].ensureIndexes(callback);
-  }, callback); // этот внешний callback вызовется после прохождения по всему массиву моделей
+  }, callback);
 };
 
-function createCards(callback) {  // тут внешний callback
+function createCards(callback) {
 
   var cards = [
   	{date: '01.03.2017', priority: 'high', description: 'Learn HTML', list_id: 1},
@@ -49,8 +48,7 @@ function createCards(callback) {  // тут внешний callback
   async.each(cards, function (cardData, callback) {
   	var card = new mongoose.models.Card(cardData);
   	card.save(callback);
-  }, callback);  // это внешний callback
-
+  }, callback);
 };
 
 

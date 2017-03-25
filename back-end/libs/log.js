@@ -1,11 +1,9 @@
-﻿console.log('libs/log.js added');
-
-var winston = require ('winston');
+﻿var winston = require ('winston');
 if (winston) {console.log('winston added');}
-var ENV = process.env.NODE_ENV;  //получаем окружение
+var ENV = process.env.NODE_ENV;
 console.log('NODE_ENV=',ENV);
 
-// can be more flexible than that O_o
+
 function getLogger(module) {
     var path = module.filename.split('/').slice(-2).join('/');
 
